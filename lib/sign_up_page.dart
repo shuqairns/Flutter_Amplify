@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amplify/auth_credentials.dart';
 
+import 'analytics_events.dart';
+import 'analytics_service.dart';
+
 class SignUpPage extends StatefulWidget {
   final ValueChanged<SignUpCredentials> didProvideCredentials;
   final VoidCallback shouldShowLogin;
@@ -84,5 +87,6 @@ class _SignUpPageState extends State<SignUpPage> {
     final credentials =
         SignUpCredentials(username: username, password: password, email: email);
     widget.didProvideCredentials(credentials);
+    AnalyticsService.log(SignUpEvent());
   }
 }

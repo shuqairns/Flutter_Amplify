@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:amplify_core/amplify_core.dart';
 import 'package:amplify_storage_s3/amplify_storage_s3.dart';
 
@@ -23,6 +24,23 @@ class StorageService {
       imageUrlsController.add(imagesUrls);
     } catch (e) {
       print('Storage List error = $e');
+    }
+  }
+
+  void uploadImageAtPath(String imagePath) async {
+    final imageFile = File(imagePath);
+    final imageKey = '${DateTime.now().microsecondsSinceEpoch}.jpg';
+
+    try {
+      final options =
+          S3UploadFileOptions(accessLevel: StorageAccessLevel.private);
+
+      await Amplify.Storage.uploadFile(
+          local: imageFile, key: imageKey, options: options);
+
+      getImages();
+    } catch (e) {
+      print('Upload error - $e');
     }
   }
 }

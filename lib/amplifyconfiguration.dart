@@ -35,6 +35,17 @@ const amplifyconfig = ''' {
                         "Bucket": "flutterapptest205450-dev",
                         "Region": "us-east-1"
                     }
+                },
+                "PinpointAnalytics": {
+                    "Default": {
+                        "AppId": "e0b3ca05454841e296be419d1b59e1d5",
+                        "Region": "us-east-1"
+                    }
+                },
+                "PinpointTargeting": {
+                    "Default": {
+                        "Region": "us-east-1"
+                    }
                 }
             }
         }
@@ -45,6 +56,19 @@ const amplifyconfig = ''' {
                 "bucket": "flutterapptest205450-dev",
                 "region": "us-east-1",
                 "defaultAccessLevel": "guest"
+            }
+        }
+    },
+    "analytics": {
+        "plugins": {
+            "awsPinpointAnalyticsPlugin": {
+                "pinpointAnalytics": {
+                    "appId": "e0b3ca05454841e296be419d1b59e1d5",
+                    "region": "us-east-1"
+                },
+                "pinpointTargeting": {
+                    "region": "us-east-1"
+                }
             }
         }
     }
